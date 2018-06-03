@@ -1,9 +1,11 @@
 import sys
-
+import requests
+import re
 import datetime
-
+import random
+import configparser
 import google_sheet,cal_period
-
+from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from datetime import datetime, timedelta,date
 from linebot import (
@@ -25,9 +27,9 @@ from linebot.models import (
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('1weJtNcy1GERLrg3CrgBYGxQPee7u7uZ8DEfjYiHBdzP2IFai3JB5HRATY8+ziuYUX1ZBrdbQNqaRSQlWivFPhL9hXlqTbOL8sT9rEW+ld6yalG1m7KQf1M/qMMRHbBqCJ0Bv7o+nL5ak6uyDXkAJwdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('3Qkr3SNlqPpzhZ0FYrPZupD/TcYAxK0+Kdh7J0u3JzH2qQkzZVGVjivLQ32olTcPIWOPg/jSaRvyekXU3gsLRs5BLHgCZEw1sHcTZoEy8yMOnTuXGvqh+27/RHYrQHVjTibPpU/YsK+qDXR+mrgEEQdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('77488403fcfe053c2220351cdeba4e56')
+handler = WebhookHandler('2aeccaa784bd1a4d7f86f6516d91851a')
 
 
 # 監聽所有來自 /callback 的 Post Request
